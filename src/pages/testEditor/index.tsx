@@ -57,7 +57,9 @@ function MyEditor() {
                 />
             </div>
             <div style={{ marginTop: '15px' }}>
-                {html}
+                <div dangerouslySetInnerHTML={{
+                    __html: html
+                }} />
             </div>
         </>
     )
