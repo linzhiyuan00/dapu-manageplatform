@@ -1,0 +1,258 @@
+@error_color: #DA041B;
+@theme_color: #0471E3;
+@success_color: #399E0E;
+@warning-color: @error_color;
+@warn1-color: #FAAD14;
+
+html,
+body,
+#root {
+  height: 100%;
+  font-size: 14px;
+  font-weight: 400;
+  color: rgba(0, 0, 0, 0.8);
+  line-height: 22px;
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+}
+
+.main_title {
+  font-size: 66px;
+}
+
+.com-xcenter {
+  display: flex;
+  justify-content: center;
+}
+
+.com-tip {
+  font-size: 12px;
+  font-weight: 400;
+  color: rgba(0, 0, 0, 0.4);
+  line-height: 20px;
+}
+
+.fn12 {
+  font-size: 12px;
+  font-weight: 400;
+  color: rgba(0, 0, 0, 0.8);
+  line-height: 20px;
+}
+
+.fn14 {
+  font-size: 14px;
+  font-weight: 400;
+  color: rgba(0, 0, 0, 0.8);
+  line-height: 22px;
+}
+
+.fn16 {
+  font-size: 16px;
+  font-weight: 500;
+  color: rgba(0, 0, 0, 0.9);
+  line-height: 24px;
+}
+
+.fn18 {
+  font-size: 18px;
+  font-weight: 500;
+  color: rgba(0, 0, 0, 0.9);
+  line-height: 26px;
+}
+
+
+
+.com_page {
+  width: 100%;
+  height: 100%;
+  padding: 24px;
+  background: #F5F5F5;
+  overflow-y: auto;
+}
+
+.com_page_title {
+  font-size: 16px;
+  font-weight: 500;
+  color: rgba(0, 0, 0, 0.9);
+  line-height: 24px;
+  margin-bottom: 20px;
+}
+
+.com-card-list {
+  margin-bottom: 16px;
+  display: flex;
+}
+
+.com_page_content {
+  padding: 24px;
+  background: #FFFFFF;
+  border-radius: 4px;
+}
+
+.com_table_bar {
+  display: flex;
+  width: 100%;
+  margin-bottom: 16px;
+
+  >button {
+    margin-right: 8px;
+  }
+
+  .com_search {
+    width: 320px;
+  }
+
+  .com-right {
+    margin-left: auto;
+  }
+
+  .com-filter-item {
+    margin-right: 8px;
+    display: flex;
+
+    .label {
+      background: rgba(0, 0, 0, 0.0200);
+      border-radius: 4px 0px 0px 4px;
+      border-top: 1px solid rgba(0, 0, 0, 0.1500);
+      border-left: 1px solid rgba(0, 0, 0, 0.1500);
+      border-bottom: 1px solid rgba(0, 0, 0, 0.1500);
+      padding: 4px 12px;
+    }
+  }
+}
+
+
+
+
+
+
+// antd 样式覆盖
+
+.ant-table {
+  font-size: 12px;
+}
+
+.ant-btn {
+  box-shadow: none;
+
+  >i {
+    font-size: 20px;
+    width: 20px;
+    height: 20px;
+    position: relative;
+    top: 1px;
+  }
+
+  >span {
+    line-height: 32px;
+    position: relative;
+    top: -1px;
+  }
+}
+
+.ant-btn-danger {
+  background-color: @error_color;
+  border-color: @error_color;
+}
+
+.ant-menu-item,
+.ant-menu-submenu {
+  .anticon {
+    position: relative;
+    top: 2px;
+  }
+}
+
+.ant-pagination-options-size-changer.ant-select {
+  margin-right: 0
+}
+
+.ant-drawer {
+  position: absolute;
+}
+
+.ant-table {
+  // font-size: 12px;
+  color: rgba(0, 0, 0, 0.8);
+  // line-height: 20px;
+}
+
+.ant-tabs-bar {
+  margin-bottom: 24px;
+}
+
+.ant-tabs .ant-tabs-small-bar .ant-tabs-tab {
+  padding: 8px 0 10px;
+}
+
+.erroritem {
+
+  // input text
+  .ant-input {
+    border-color: @error_color;
+  }
+
+  .ant-input:hover {
+    border-color: @error_color;
+  }
+
+  .ant-input:focus {
+    box-shadow: 0 0 2px @error_color;
+  }
+
+  .ant-select-selection {
+    border-color: @error_color;
+  }
+
+  .ant-select-selection:hover {
+    border-color: @error_color;
+  }
+
+  .ant-calendar-picker:hover .ant-calendar-picker-input:not(.ant-input-disabled) {
+    border-color: @error_color;
+  }
+
+  .ant-select-selection:focus {
+    border-color: @error_color;
+    box-shadow: 0 0 2px @error_color;
+  }
+}
+
+.ant-modal-footer {
+  border-top: none;
+  padding-bottom: 24px;
+}
+
+
+.conactfilter {
+  .ant-input {
+    border-radius: 0px 4px 4px 0;
+  }
+
+  .ant-select-selection {
+    border-radius: 0px 4px 4px 0;
+  }
+}
+
+
+.addInvoiceModal {
+  .ant-modal-header {
+    padding: 16px 24px 0;
+  }
+
+  .ant-tabs-bar {
+    margin-bottom: 0;
+  }
+}
+
+.danger {
+  color: #DA041B;
+
+  &:hover {
+    color: #DA041B;
+    border-color: #DA041B;
+  }
+}
