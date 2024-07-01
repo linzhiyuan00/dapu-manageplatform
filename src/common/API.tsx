@@ -20,8 +20,8 @@ export const API = {
     queryInvoiceTotal: '/api/invoice/total',
 
     // 页面
-    // sim卡管理
-    querySimList: '/api/sim/list',
+    // 联系我们管理
+    queryContactUsList: '/api/sim/list',
     // sim导出
     simExport: '/api/sim/export',
     // 文件导入记录

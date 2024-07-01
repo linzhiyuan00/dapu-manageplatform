@@ -27,36 +27,13 @@ const config: IConfig = {
           routes: [
             {
               path: '/home/',
-              component: './home/simManage/simManage.tsx',
+              component: './home/contactUsManage/contactUsManage.tsx',
             },
             {
-              path: '/home/simManage',
-              component: './home/simManage/simManage.tsx',
+              path: '/home/contactUsManage',
+              component: './home/contactUsManage/contactUsManage.tsx',
             },
-            // {
-            //   path: '/home/pendingRenewOrder',
-            //   component: './home/pendingRenewOrder/pendingRenewOrder.tsx',
-            // },
-            {
-              path: '/home/orderRecord',
-              component: './home/orderRecord/orderRecord.tsx',
-            },
-            {
-              path: '/home/remitInfoSubmitAudit',
-              component: './home/remitInfoSubmitAudit/remitInfoSubmitAudit.tsx',
-            },
-            {
-              path: '/home/remitRecord',
-              component: './home/remitRecord/remitRecord.tsx',
-            },
-            {
-              path: '/home/invoiceApplyAduit',
-              component: './home/invoiceApplyAduit/invoiceApplyAduit.tsx',
-            },
-            {
-              path: '/home/invoiceRecord',
-              component: './home/invoiceRecord/invoiceRecord.tsx',
-            },
+          
           ],
         },
       ],
@@ -68,9 +45,8 @@ const config: IConfig = {
       antd: true,
       dva: true,
       dynamicImport: false,
-      title: 'hongyun-manageplatform',
+      title: '达普-官网管理平台',
       dll: false,
-
       routes: {
         exclude: [
           /components\//,

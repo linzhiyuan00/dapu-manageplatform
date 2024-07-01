@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import styles from './login.less';
-import Applogo from '../../assets/app-hongyun.png';
+import Applogo from '../../assets/logo.svg';
 import accountIcon from '../../assets/account.png';
 import passwordIcon from '../../assets/password.png';
 import { Input, Button, message } from 'antd';
@@ -40,12 +40,12 @@ export default function (props: any) {
       } else {
         SetErrorTip(res.msg)
       }
-    },(err) => {console.log(err);SetLoginloading(false);SetErrorTip('对不起，网络繁忙，请稍后重试')})
+    }, (err) => { console.log(err); SetLoginloading(false); SetErrorTip('对不起，网络繁忙，请稍后重试') })
   }
 
 
   const enterLogin = (key: string) => {
-    if(key === 'Enter') {
+    if (key === 'Enter') {
       login();
     }
   }
@@ -57,8 +57,8 @@ export default function (props: any) {
           <div className={styles.left}>
             <img src={Applogo} alt="" />
             <div className={styles.textcontent}>
-              <div className={styles.maintitle}>随时随地，管理流量</div>
-              <div className={styles.destitle}>欢迎使用鸿运-汽车行驶记录仪流量监控管理平台</div>
+              <div className={styles.maintitle}>达普生物</div>
+              <div className={styles.destitle}>欢迎登录达普生物官网管理平台</div>
             </div>
           </div>
           <div className={styles.right}>
@@ -71,7 +71,7 @@ export default function (props: any) {
               </div>
               <div className={passwordError ? styles.inputItem + ' ' + styles.error : styles.inputItem}>
                 <img src={passwordIcon} alt="" />
-                <Input onKeyUp={(e) => enterLogin(e.key)} value={password} placeholder="密码" onChange={(e) => { SetPassword(e.currentTarget.value);SetErrorTip(''); SetPasswordError(false) }} size="large"></Input>
+                <Input onKeyUp={(e) => enterLogin(e.key)} value={password} placeholder="密码" onChange={(e) => { SetPassword(e.currentTarget.value); SetErrorTip(''); SetPasswordError(false) }} size="large"></Input>
               </div>
               <div className={styles.loginfooter}>
                 <Button loading={loginloading} type="primary" size="large" onClick={login}>登录</Button>
@@ -81,7 +81,7 @@ export default function (props: any) {
         </div>
       </div>
       <div className={styles.footer}>
-        Copyright © 2022 杭州鸿泉物联网技术股份有限公司 All rights reserved. 浙ICP备11029511号-1  浙公网安备 33010802012126号
+        Copyright © 2017-2024 浙江达普生物科技有限公司
       </div>
     </div>
   );

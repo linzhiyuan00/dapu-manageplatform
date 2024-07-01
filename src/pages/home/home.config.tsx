@@ -1,76 +1,29 @@
 export const menuMap: { [key: string]: { routePath: string } } = {
-    simManage: {
-        routePath: '/home/simManage'
+    contactUsManage: {
+        routePath: '/home/contactUsManage'
     },
-    pendingRenewOrder: {
-        routePath: '/home/pendingRenewOrder'
+    applicationCases: {
+        routePath: '/home/applicationCases'
     },
-    orderRecord: {
-        routePath: '/home/orderRecord'
-    },
-    remitInfoSubmitAudit: {
-        routePath: '/home/remitInfoSubmitAudit'
-    },
-    remitRecord: {
-        routePath: '/home/remitRecord'
-    },
-    invoiceApplyAduit: {
-        routePath: '/home/invoiceApplyAduit'
-    },
-    invoiceRecord: {
-        routePath: '/home/invoiceRecord'
+    informationManagement: {
+        routePath: '/home/informationManagement'
     },
 }
 
 export const menuConfig = [
     {
-        title: 'SIM卡管理',
-        key: 'simManage',
+        title: '联系我们管理',
+        key: 'contactUsManage',
         iconType: 'icon-a-Iconmianxing2020SIMka',
     },
     {
-        title: '订单管理',
-        key: '2',
-        iconType: 'icon-a-Iconmianxing2020biaodan',
-        children: [
-            // {
-            //     title: '待处理套餐续费订单',
-            //     key: 'pendingRenewOrder'
-            // },
-            {
-                title: '订单记录',
-                key: 'orderRecord'
-            },
-        ]
+        title: '应用案例管理',
+        key: 'applicationCases',
+        iconType: 'icon-a-Iconmianxing2020SIMka',
     },
     {
-        title: '资金管理',
-        key: '3',
-        iconType: 'icon-a-Iconmianxing2020yinhangka',
-        children: [
-            {
-                title: '汇款信息提交审核',
-                key: 'remitInfoSubmitAudit'
-            },
-            {
-                title: '汇款记录',
-                key: 'remitRecord'
-            },
-        ]
-    },
-    {
-        title: '发票管理',
-        key: '4',
-        iconType: 'icon-a-Iconmianxing2020fapiao',
-        children: [
-            {
-                title: '开票申请审核',
-                key: 'invoiceApplyAduit'
-            },
-            {
-                title: '开票记录',
-                key: 'invoiceRecord'
-            },
-        ]
+        title: '资讯管理',
+        key: 'informationManagement',
+        iconType: 'icon-a-Iconmianxing2020SIMka',
     },
 ];

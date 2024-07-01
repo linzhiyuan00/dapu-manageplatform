@@ -8,7 +8,7 @@ import { connect } from 'dva';
 import { menuConfig, menuMap } from './home.config'
 import { IconFont } from '@/components';
 import Item from 'antd/lib/list/Item';
-import headerleft_svg from '../../assets/header-left.svg';
+import headerleft_svg from '../../assets/indexlogo1.svg';
 import headerright_svg from '../../assets/header-right.svg';
 const { SubMenu } = Menu;
 
@@ -22,13 +22,13 @@ const Home = (props: any) => {
     invoiceApplyAduit: 0
   });
 
-  useEffect(() => {
-    const newmenuNumTip = { ...menuNumTip };
-    newmenuNumTip.pendingRenewOrder = props.state.global.TodoTotal?.todo_order_num;
-    newmenuNumTip.remitInfoSubmitAudit = props.state.global.RemitTodoTotal?.todo_remit_num;
-    newmenuNumTip.invoiceApplyAduit = props.state.global.InvoiceTodoTotal?.todo_invoice_num;
-    setMenuNumTip(newmenuNumTip)
-  }, [props])
+  // useEffect(() => {
+  //   const newmenuNumTip = { ...menuNumTip };
+  //   newmenuNumTip.pendingRenewOrder = props.state.global.TodoTotal?.todo_order_num;
+  //   newmenuNumTip.remitInfoSubmitAudit = props.state.global.RemitTodoTotal?.todo_remit_num;
+  //   newmenuNumTip.invoiceApplyAduit = props.state.global.InvoiceTodoTotal?.todo_invoice_num;
+  //   setMenuNumTip(newmenuNumTip)
+  // }, [menuNumTip, props])
 
   // 菜单选中
   const menuSelect = (item: any) => {
@@ -45,7 +45,7 @@ const Home = (props: any) => {
 
     // 更新全局状态
     updateGlobalStatus();
-  }, [])
+  }, [updateGlobalStatus])
 
   const updateGlobalStatus = () => {
     props.dispatch({
@@ -90,7 +90,7 @@ const Home = (props: any) => {
         <div className={styles.pageTop_left}>
           <img src={headerleft_svg} alt="" />
           <div className={styles.logo}></div>
-          <div className={styles.title}>鸿运-汽车行驶记录仪流量监控管理平台</div>
+          {/* <div className={styles.title}>鸿运-汽车行驶记录仪流量监控管理平台</div> */}
         </div>
         <div className={styles.pageTop_right}>
           <img src={headerright_svg} alt="" />
