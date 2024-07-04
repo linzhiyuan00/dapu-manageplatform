@@ -11,7 +11,7 @@ const ComShowInfo = (props: any) => {
         let value = data;
         const keyList = key.split('.');
         keyList.forEach((key: string) => {
-            value = value[key];
+            value = value?.[key];
         });
         if (item.maptype) {
             return CommonMap[item.maptype][value]
@@ -28,7 +28,7 @@ const ComShowInfo = (props: any) => {
                             <div className={styles.label}>{item.label}：</div>
                             <div className={styles.content}>
                                 {
-                                    item.type === 'text' && (
+                                    (!item?.type || item.type === 'text') && (
                                         <span >{getValue(data, item.key, item)}</span>
                                     )
                                 }
@@ -44,7 +44,7 @@ const ComShowInfo = (props: any) => {
                                 }
                                 {
                                     item.type === 'file' && (
-                                        <a href={getValue(data, item.fileUrl as string, item)} target="_blank" style={{ color: '#0471E3' }} >{getValue(data, item.key, item)}</a>
+                                        <a href={getValue(data, item.fileUrl as string, item)} target="_blank" style={{ color: '#0471E3' }} rel="noreferrer" >{getValue(data, item.key, item)}</a>
                                     )
                                 }
                             </div>
@@ -58,7 +58,7 @@ const ComShowInfo = (props: any) => {
 
 export interface ShowInfoConfig {
     label: string;
-    type: 'text' | 'status' | 'money' | 'file';
+    type?: 'text' | 'status' | 'money' | 'file';
     key: string;
     style?: any;
     maptype?: string,

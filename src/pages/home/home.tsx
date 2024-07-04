@@ -48,27 +48,9 @@ const Home = (props: any) => {
   }, [updateGlobalStatus])
 
   const updateGlobalStatus = () => {
-    props.dispatch({
-      type: 'global/queryPackagesList'
-    });
     // props.dispatch({
-    //   type: 'global/queryTodoTotal'
+    //   type: 'global/queryPackagesList'
     // });
-    props.dispatch({
-      type: 'global/queryOrderTotal'
-    });
-    props.dispatch({
-      type: 'global/queryRemitTodoTotal'
-    });
-    props.dispatch({
-      type: 'global/queryRemitTotal'
-    });
-    props.dispatch({
-      type: 'global/queryInvoiceTodoTotal'
-    });
-    props.dispatch({
-      type: 'global/queryInvoiceTotal'
-    });
   }
 
   const quitAccount = () => {

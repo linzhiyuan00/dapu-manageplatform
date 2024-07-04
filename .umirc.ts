@@ -33,6 +33,14 @@ const config: IConfig = {
               path: '/home/contactUsManage',
               component: './home/contactUsManage/contactUsManage.tsx',
             },
+            {
+              path: '/home/applicationCases',
+              component: './home/applicationCases/applicationCases.tsx',
+            },
+            {
+              path: '/home/informationManagement',
+              component: './home/informationManagement/informationManagement.tsx',
+            },
           
           ],
         },
@@ -54,16 +62,17 @@ const config: IConfig = {
       },
     }],
   ],
-  // proxy: {
-  //   "/api": {
-  //     target: 'https://hongyun.hopechart.com:12343/api',
-  //     secure: false,
-  //     changeOrigin: true,
-  //   }
-  // },
-  // devServer: {
-  //   https: true
-  // },
+  proxy: {
+    "/api": {
+      target: 'http://114.55.225.21:8097',
+      secure: false,
+      changeOrigin: true,
+    }
+  },
+  devServer: {
+    // https: true
+    
+  },
   theme: {
     "primary-color": "#0471E3",
   }

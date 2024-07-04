@@ -1,11 +1,30 @@
 import React, { useState, useRef, useEffect, useCallback } from 'react';
 import styles from './simManage.less';
 import { Button, Icon, Input, Modal, message, Drawer, Select } from 'antd';
-import { ComShowInfo, ShowInfoConfig, FromConfig, ComTable, IconFont, ComStatus } from '@/components/index'
+import { ComShowInfo, ShowInfoConfig, FromConfig, CardList, IconFont, ComStatus } from '@/components/index'
 import { $http, API, ResponseData } from '@/common/http';
 import { getPackageList, paramHandle } from '@/common/utils';
 import { arrToOptions, CommonMap, mapToArr } from '@/common/map';
 import moment from 'moment';
+
+const testList = [
+  {
+    imgUrl: '',
+    title: '达普生物高通量筛选系统落成国际领先新药研发企业',
+    content: '',
+  },
+  {
+    imgUrl: '',
+    title: '达普生物华南研发中心开业大吉',
+    content: '',
+  },
+  {
+    imgUrl: '',
+    title: '爱博泰克与达普生物签署战略合作协议',
+    content: '',
+  },
+
+]
 
 const _showInfoConfig: ShowInfoConfig[] = [
   {
@@ -146,17 +165,17 @@ const SimManage = (props: any) => {
 
   return (
     <div className="com_page">
-      <div className="com_page_title">联系我们管理</div>
+      <div className="com_page_title">应用案例管理</div>
       <div className="com_page_content">
         <div className="com_table_bar">
           <Search className='com_search' placeholder="请输入姓名或手机号进行搜索" onSearch={onSearch} enterButton />
         </div>
-        <ComTable loading={tableLoading} onChange={tableOnchange} dataSource={data} total={total} columns={columns} rowKey="sim_id" ></ComTable>
+        <CardList list={testList}></CardList>
       </div>
 
       {/* 处理 详情 */}
       <Drawer
-        title="详情"
+        title="订单详情"
         placement="right"
         width={640}
         closable

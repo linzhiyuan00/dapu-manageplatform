@@ -146,7 +146,7 @@ const SimManage = (props: any) => {
 
   return (
     <div className="com_page">
-      <div className="com_page_title">联系我们管理</div>
+      <div className="com_page_title">SIM卡管理</div>
       <div className="com_page_content">
         <div className="com_table_bar">
           <Search className='com_search' placeholder="请输入姓名或手机号进行搜索" onSearch={onSearch} enterButton />
@@ -156,7 +156,7 @@ const SimManage = (props: any) => {
 
       {/* 处理 详情 */}
       <Drawer
-        title="详情"
+        title="订单详情"
         placement="right"
         width={640}
         closable

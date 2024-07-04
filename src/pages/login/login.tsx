@@ -32,11 +32,11 @@ export default function (props: any) {
       return;
     }
     SetLoginloading(true);
-    $http.post(API.login, { admin_account: account, password }).then((res: any) => {
+    $http.post(API.login, { username: account, password }).then((res: any) => {
       SetLoginloading(false);
       if (res.code === 200) {
         message.success('登录成功');
-        router.push('/home/simManage');
+        router.push('/home/contactUsManage');
       } else {
         SetErrorTip(res.msg)
       }

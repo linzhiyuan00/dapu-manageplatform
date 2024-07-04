@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import styles from './ComTable.less';
 import { Table } from 'antd';
+import noDataSvg from '../../assets/nodata.svg'
+import searchNoData from '../../assets/search-nodata.svg'
 
 const ComTable = (props: any) => {
     // console.log('props:', props)
@@ -15,12 +17,12 @@ const ComTable = (props: any) => {
                             {
                                 searching ?
                                     <div>
-                                        <img src={"https://hongyun.hopechart.com:12343/storage/img/nodata/search-nodata.svg"} alt="" />
+                                        <img src={searchNoData} alt="" />
                                         <div className="com-tip">未搜索到相关数据，请尝试其他搜索词</div>
                                     </div>
                                     :
                                     <div>
-                                        <img src={"https://hongyun.hopechart.com:12343/storage/img/nodata/nodata.svg"} alt="" />
+                                        <img src={noDataSvg} alt="" />
                                         <div className="com-tip">暂无相关数据</div>
                                     </div>
                             }

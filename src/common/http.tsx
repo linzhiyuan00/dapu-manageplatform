@@ -4,14 +4,14 @@ import { API } from "./API";
 
 
 // const baseUrl = 'https://hy.hopechart.com:12343';
-const baseUrl = 'https://hongyun.hopechart.com:12343';
+// const baseUrl = 'http://114.55.225.21:8097';
 
 const clearRequest = {
     source: axios.CancelToken.source(),
 }
 
 const $http = axios.create({
-    baseURL: baseUrl,
+    // baseURL: ,
     timeout: 300000,
     withCredentials: true,//请求头带cookie
     xsrfCookieName: 'XSRF-TOKEN',
@@ -21,9 +21,9 @@ const $http = axios.create({
 // 配置发送请求拦截器
 $http.interceptors.request.use(config => {
     config.cancelToken = clearRequest.source.token;
-    const cookie: any = localStorage.getItem('login_cookie');
-    if (cookie) {
-        config.headers.Authorization = cookie
+    const token: any = localStorage.getItem('login_token');
+    if (token) {
+        config.headers.token = token
     };
     if (config.method === 'post') {
         config.data = config.data
@@ -35,13 +35,15 @@ $http.interceptors.request.use(config => {
 
 // 配置请求返回拦截器
 $http.interceptors.response.use(res => {
-    if (res.config.url === '/api/login') {
-        localStorage.setItem('login_cookie', document.cookie);
+    console.log('response::', res)
+
+    if (res.config.url === '/api/thunder_backend/user/login' && res.data.code === 200) {
+        localStorage.setItem('login_token', res.data.data);
     }
-    if(res.data.code === 219) {
-        router.replace('/login');
-        return Error;
-    }
+    // if (res.data.code === 219) {
+    //     router.replace('/login');
+    //     return Error;
+    // }
     return res.data
 })
 
