@@ -75,7 +75,10 @@ const SimManage = (props: any) => {
     {
       title: '创建时间',
       dataIndex: 'createTime',
-      render: (time: number) => <span>{moment(time).format('YYYY-MM-DD HH:mm:ss')}</span>,
+      render: (time: number) => <span>
+        {time}
+        {/* {moment(time).format('YYYY-MM-DD HH:mm:ss')} */}
+      </span>,
     },
     {
       title: '操作',
@@ -88,7 +91,8 @@ const SimManage = (props: any) => {
               setVisible_2(true);
               SetModel_2({
                 ...record,
-                createTime: moment(record?.createTime).format('YYYY-MM-DD HH:mm:ss')
+                createTime: createTime
+                //  moment(record?.createTime).format('YYYY-MM-DD HH:mm:ss')
               })
             }}>查看</a>
         </div>
