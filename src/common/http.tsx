@@ -37,7 +37,7 @@ $http.interceptors.request.use(config => {
 $http.interceptors.response.use(res => {
     console.log('response::', res)
 
-    if (res.config.url === '/api/thunder_backend/user/login' && res.data.code === 200) {
+    if (res.config.url === API.login && res.data.code === 200) {
         localStorage.setItem('login_token', res.data.data);
     }
     if (res.data.code === 500) {
