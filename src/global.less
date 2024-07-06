@@ -63,6 +63,10 @@ body {
   line-height: 26px;
 }
 
+.marbottom12 {
+  margin-bottom: 12px;
+}
+
 
 
 .com_page {
@@ -79,6 +83,7 @@ body {
   color: rgba(0, 0, 0, 0.9);
   line-height: 24px;
   margin-bottom: 20px;
+  display: flex;
 }
 
 .com-card-list {
@@ -90,6 +95,7 @@ body {
   padding: 24px;
   background: #FFFFFF;
   border-radius: 4px;
+  margin-bottom: 16px;
 }
 
 .com_table_bar {
@@ -224,6 +230,23 @@ body {
 .ant-modal-footer {
   border-top: none;
   padding-bottom: 24px;
+}
+
+.hiddenUpload {
+  .ant-upload {
+    display: none;
+  }
+}
+
+.bigUploadPic {
+  width: 368px;
+  height: 210px;
+
+  .ant-upload,
+  .ant-upload-list-item-list-type-picture-card {
+    width: 368px;
+    height: 210px;
+  }
 }
 
 

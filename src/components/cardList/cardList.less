@@ -10,7 +10,7 @@
         margin-bottom: 8px;
         position: relative;
 
-        .img {
+        img {
             width: 280px;
             height: 100%;
         }
@@ -51,16 +51,25 @@
             height: 100%;
             padding-top: 14px;
 
-            .editicon {
-                margin-right: 20px;
+            i {
+                font-size: 20px;
             }
 
-            .deleteicon {}
+            .editicon {
+                margin-right: 20px;
+                cursor: pointer;
+            }
+
+            .deleteicon {
+                cursor: pointer;
+            }
 
             .eye {
                 position: absolute;
                 bottom: 13px;
                 right: 16px;
+                display: flex;
+                align-items: center;
 
                 >i {
                     margin-right: 2px;

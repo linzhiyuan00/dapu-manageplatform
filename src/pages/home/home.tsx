@@ -15,20 +15,11 @@ const { SubMenu } = Menu;
 const Home = (props: any) => {
   const [username, setUsername] = useState('admin');
   const [selectedKeys, setSelectedKeys] = useState(['simManage']);
-  const [collapsed, setCollapsed] = useState(false);
   const [menuNumTip, setMenuNumTip] = useState<{ [key: string]: number }>({
     pendingRenewOrder: 0,
     remitInfoSubmitAudit: 0,
     invoiceApplyAduit: 0
   });
-
-  // useEffect(() => {
-  //   const newmenuNumTip = { ...menuNumTip };
-  //   newmenuNumTip.pendingRenewOrder = props.state.global.TodoTotal?.todo_order_num;
-  //   newmenuNumTip.remitInfoSubmitAudit = props.state.global.RemitTodoTotal?.todo_remit_num;
-  //   newmenuNumTip.invoiceApplyAduit = props.state.global.InvoiceTodoTotal?.todo_invoice_num;
-  //   setMenuNumTip(newmenuNumTip)
-  // }, [menuNumTip, props])
 
   // 菜单选中
   const menuSelect = (item: any) => {
@@ -43,18 +34,11 @@ const Home = (props: any) => {
     const curRoute = window.location.hash.split('/')[window.location.hash.split('/').length - 1];
     setSelectedKeys([curRoute]);
 
-    // 更新全局状态
-    updateGlobalStatus();
-  }, [updateGlobalStatus])
-
-  const updateGlobalStatus = () => {
-    // props.dispatch({
-    //   type: 'global/queryPackagesList'
-    // });
-  }
+  }, [])
 
   const quitAccount = () => {
-    router.replace('/login')
+    router.replace('/login');
+    localStorage.setItem('login_token', '')
   }
 
   const menu = (
@@ -72,7 +56,6 @@ const Home = (props: any) => {
         <div className={styles.pageTop_left}>
           <img src={headerleft_svg} alt="" />
           <div className={styles.logo}></div>
-          {/* <div className={styles.title}>鸿运-汽车行驶记录仪流量监控管理平台</div> */}
         </div>
         <div className={styles.pageTop_right}>
           <img src={headerright_svg} alt="" />

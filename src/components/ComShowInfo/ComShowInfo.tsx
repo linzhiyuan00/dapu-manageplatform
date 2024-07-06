@@ -1,7 +1,5 @@
 import { CommonMap } from '@/common/map';
-import Item from 'antd/lib/list/Item';
 import React from 'react';
-import ComStatus from '../ComStatus/ComStatus';
 import styles from './ComShowInfo.less';
 
 const ComShowInfo = (props: any) => {
@@ -35,11 +33,6 @@ const ComShowInfo = (props: any) => {
                                 {
                                     item.type === 'money' && (
                                         <span style={{ color: '#DA041B' }} >{getValue(data, item.key, item)} {item.moneyText} 元</span>
-                                    )
-                                }
-                                {
-                                    item.type === 'status' && (
-                                        <ComStatus type={item.key} value={data[item.key]}></ComStatus>
                                     )
                                 }
                                 {

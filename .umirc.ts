@@ -10,10 +10,6 @@ const config: IConfig = {
       component: '../layouts/index',
       routes: [
         {
-          path: '/testEditor/',
-          component: './testEditor/index.tsx',
-        },
-        {
           path: '/',
           component: './login/login.tsx',
         },
@@ -41,7 +37,10 @@ const config: IConfig = {
               path: '/home/informationManagement',
               component: './home/informationManagement/informationManagement.tsx',
             },
-          
+            {
+              path: '/home/editor',
+              component: './home/editor/editor.tsx',
+            },
           ],
         },
       ],
@@ -67,6 +66,11 @@ const config: IConfig = {
       target: 'http://114.55.225.21:8097',
       secure: false,
       changeOrigin: true,
+    },
+    "/file": {
+      target: 'http://114.55.225.21:8097',
+      secure: true,
+      changeOrigin: true,
     }
   },
   devServer: {
@@ -74,7 +78,7 @@ const config: IConfig = {
     
   },
   theme: {
-    "primary-color": "#0471E3",
+    "primary-color": "#0215C1",
   }
 }
 

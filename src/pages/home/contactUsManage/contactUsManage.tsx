@@ -1,10 +1,7 @@
-import React, { useState, useRef, useEffect, useCallback } from 'react';
-import styles from './simManage.less';
-import { Button, Icon, Input, Modal, message, Drawer, Select } from 'antd';
-import { ComShowInfo, ShowInfoConfig, FromConfig, ComTable, IconFont, ComStatus } from '@/components/index'
-import { $http, API, ResponseData } from '@/common/http';
-import { getPackageList, paramHandle } from '@/common/utils';
-import { arrToOptions, CommonMap, mapToArr } from '@/common/map';
+import React, { useState, useEffect, useCallback } from 'react';
+import { Input, Drawer, Select } from 'antd';
+import { ComShowInfo, ShowInfoConfig, ComTable } from '@/components/index'
+import { $http, API } from '@/common/http';
 import moment from 'moment';
 
 const _showInfoConfig: ShowInfoConfig[] = [
@@ -103,7 +100,7 @@ const SimManage = (props: any) => {
   // sim列表
   const queryList = useCallback(() => {
     SetTableLoading(true);
-    $http.post(API.contactList, paramHandle(Param)).then((res: any) => {
+    $http.post(API.contactList, Param).then((res: any) => {
       console.log('res::', res)
       if (res.code === 200) {
         SetTotal(res.total);

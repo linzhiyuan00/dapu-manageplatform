@@ -1,116 +1,34 @@
-import React, { useState, useRef, useEffect, useCallback } from 'react';
-import styles from './simManage.less';
-import { Button, Icon, Input, Modal, message, Drawer, Select } from 'antd';
-import { ComShowInfo, ShowInfoConfig, FromConfig, ComTable, IconFont, ComStatus } from '@/components/index'
-import { $http, API, ResponseData } from '@/common/http';
-import { getPackageList, paramHandle } from '@/common/utils';
-import { arrToOptions, CommonMap, mapToArr } from '@/common/map';
-import moment from 'moment';
-
-const _showInfoConfig: ShowInfoConfig[] = [
-  {
-    key: 'name',
-    label: '姓名'
-  },
-  {
-    key: 'phone',
-    label: '手机号'
-  },
-  {
-    key: 'email',
-    label: '邮箱',
-    divider: true
-  },
-  {
-    key: 'company',
-    label: '企业'
-  },
-  {
-    key: 'post',
-    label: '职称',
-    divider: true
-  },
-  {
-    key: 'requirement',
-    label: '需要服务',
-  },
-  {
-    key: 'remark',
-    label: '备注',
-    divider: true
-  },
-  {
-    key: 'createTime',
-    label: '创建时间'
-  },
-];
-
-const { Search } = Input;
-const { Option } = Select;
+import React, { useState, useEffect, useCallback } from 'react';
+import { Button, Pagination } from 'antd';
+import { CardList } from '@/components/index'
+import { $http, API } from '@/common/http';
+import router from 'umi/router';
 
 const SimManage = (props: any) => {
 
-  useEffect(() => {
-    // console.log('props:', props)
-  }, [props])
-
-  const [selectedRowKeys, setSelectedRowKeys] = useState([]);
   const [data, SetData] = useState<any[]>([]);
   const [total, SetTotal] = useState(0);
   const [tableLoading, SetTableLoading] = useState(false);
-  const [tableSearching, SetTableSearching] = useState(false);
-  const [searchKey, SetSearchKey] = useState('');
-  const [device_status, SetDevice_status] = useState<any>();
   const [Param, SetParam] = useState<any>({
     pageNum: 1,
     pageSize: 10
   });
-  const columns: any[] = [
-    {
-      title: '姓名',
-      dataIndex: 'name',
-      fixed: 'left'
-    },
-    {
-      title: '手机号',
-      dataIndex: 'phone',
-    },
-    {
-      title: '创建时间',
-      dataIndex: 'createTime',
-      render: (time: number) => <span>{moment(time).format('YYYY-MM-DD HH:mm:ss')}</span>,
-    },
-    {
-      title: '操作',
-      key: 'action',
-      fixed: 'right',
-      render: (_: any, record: any) => (
-        <div>
-          <a
-            onClick={() => {
-              setVisible_2(true);
-              SetModel_2({
-                ...record,
-                createTime: moment(record?.createTime).format('YYYY-MM-DD HH:mm:ss')
-              })
-            }}>查看</a>
-        </div>
-      ),
-    },
 
-  ]
-
-  // sim列表
+  // 案例列表
   const queryList = useCallback(() => {
     SetTableLoading(true);
-    $http.post(API.contactList, paramHandle(Param)).then((res: any) => {
+    $http.get(API.newsList + `?pageNum=${Param.pageNum}&pageSize=${Param.pageSize}`).then((res: any) => {
       console.log('res::', res)
       if (res.code === 200) {
         SetTotal(res.total);
-        SetData(res.rows)
+        SetData(res.rows.map((i) => {
+          return {
+            ...i,
+            eyeCount: i.viewership
+          }
+        }))
         SetTableLoading(false);
       }
-
     })
   }, [Param])
 
@@ -120,52 +38,44 @@ const SimManage = (props: any) => {
   }, [Param, queryList]);
 
 
-  const onSearch = (e: any) => {
-    SetSearchKey(e);
+  const onShowSizeChange = (current: number, pageSize: number) => {
+    if (pageSize !== Param.pageSize) {
+      current = 1;
+    }
     SetParam({
       ...Param,
-      searchKey: e,
-      pageNum: 1,
-    });
+      pageNum: current,
+      pageSize
+    })
   }
-
-  const tableOnchange = (pagination: any, filters: any, sorter: any) => {
-    SetParam({
-      ...Param,
-      pageNum: pagination.current,
-      pageSize: pagination.pageSize,
-      sort: sorter?.order && [sorter.field, sorter.order]
-    });
-  }
-
-  // 信息查看
-  const [visible_2, setVisible_2] = useState(false);
-  const [model_2, SetModel_2] = useState({});
 
 
 
   return (
     <div className="com_page">
-      <div className="com_page_title">SIM卡管理</div>
+      <div className="com_page_title">资讯管理</div>
       <div className="com_page_content">
         <div className="com_table_bar">
-          <Search className='com_search' placeholder="请输入姓名或手机号进行搜索" onSearch={onSearch} enterButton />
+          <Button type='primary' icon='plus-circle' onClick={() => router.push({
+            pathname: '/home/editor',
+            query: {
+              type: 'news',
+              action: 'add'
+            }
+          })}> 添加资讯</Button>
         </div>
-        <ComTable loading={tableLoading} onChange={tableOnchange} dataSource={data} total={total} columns={columns} rowKey="sim_id" ></ComTable>
+        <CardList list={data} type='news' loading={tableLoading} onChange={() => {
+          queryList()
+        }}></CardList>
+        <Pagination style={{ textAlign: 'right', marginTop: 16 }}
+          showSizeChanger
+          onShowSizeChange={onShowSizeChange}
+          onChange={onShowSizeChange}
+          current={Param.pageNum}
+          pageSize={Param.pageSize}
+          total={total}
+        />
       </div>
-
-      {/* 处理 详情 */}
-      <Drawer
-        title="订单详情"
-        placement="right"
-        width={640}
-        closable
-        onClose={() => setVisible_2(false)}
-        visible={visible_2}
-      // getContainer={() => document.getElementById('pageContent') as HTMLElement}
-      >
-        <ComShowInfo showInfoConfig={_showInfoConfig} data={model_2}></ComShowInfo>
-      </Drawer>
     </div >
   );
 }
