@@ -40,7 +40,7 @@ $http.interceptors.response.use(res => {
     if (res.config.url === API.login && res.data.code === 200) {
         localStorage.setItem('login_token', res.data.data);
     }
-    if (res.data.code === 500) {
+    if (res.data.code === 1001) {
         router.replace('/login');
         return Error;
     }

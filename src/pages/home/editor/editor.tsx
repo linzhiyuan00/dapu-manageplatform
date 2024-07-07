@@ -40,7 +40,7 @@ function MyEditor(props: any) {
     // 模拟 ajax 请求，异步设置 html
     useEffect(() => {
         if (action === 'edit' && id) {
-            $http.get((type === 'case' ? API.caseInfoId : API.newsInfoId) + id).then((res: any) => {
+            $http.get((type === 'case' ? API.caseInfoId : API.newsInfoId) + id + '?view=false').then((res: any) => {
                 if (res.code === 200) {
                     setData({
                         ...res.data,

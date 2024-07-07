@@ -91,7 +91,7 @@ const SimManage = (props: any) => {
               setVisible_2(true);
               SetModel_2({
                 ...record,
-                createTime: createTime
+                createTime: record.createTime
                 //  moment(record?.createTime).format('YYYY-MM-DD HH:mm:ss')
               })
             }}>查看</a>
@@ -104,7 +104,7 @@ const SimManage = (props: any) => {
   // sim列表
   const queryList = useCallback(() => {
     SetTableLoading(true);
-    $http.post(API.contactList, Param).then((res: any) => {
+    $http.get(API.contactList + `?pageNum=${Param.pageNum}&pageSize=${Param.pageSize}` + (searchKey ? `&searchKey=${searchKey}` : '')).then((res: any) => {
       console.log('res::', res)
       if (res.code === 200) {
         SetTotal(res.total);
@@ -113,7 +113,7 @@ const SimManage = (props: any) => {
       }
 
     })
-  }, [Param])
+  }, [Param.pageNum, Param.pageSize, searchKey])
 
 
   useEffect(() => {
