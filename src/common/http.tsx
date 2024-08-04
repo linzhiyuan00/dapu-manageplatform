@@ -4,7 +4,7 @@ import { API } from "./API";
 
 
 // const baseUrl = 'https://hy.hopechart.com:12343';
-// const baseUrl = 'http://114.55.225.21:8097';
+// const baseUrl = 'http://47.96.189.4:8097';
 
 const clearRequest = {
     source: axios.CancelToken.source(),

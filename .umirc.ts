@@ -63,12 +63,12 @@ const config: IConfig = {
   ],
   proxy: {
     "/api": {
-      target: 'http://114.55.225.21:8097',
+      target: 'http://47.96.189.4:8097',
       secure: false,
       changeOrigin: true,
     },
     "/file": {
-      target: 'http://114.55.225.21:8097',
+      target: 'http://47.96.189.4:8097',
       secure: true,
       changeOrigin: true,
     }

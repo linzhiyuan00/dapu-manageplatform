@@ -74,7 +74,7 @@ function MyEditor(props: any) {
                 customInsert(res: any, insertFn: any) {  // TS 语法
                     insertFn(
                         // window.location.origin + res.data,
-                        // 'http://114.55.225.21:8097/' + res.data,
+                        // 'http://47.96.189.4:8097/' + res.data,
                         res.data,
                         '', '')
                 },
