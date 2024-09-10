@@ -14,7 +14,7 @@ import {
 import router from 'umi/router';
 import { $http } from '@/common/http';
 import { API } from '@/common/API';
-import { getToken } from '@/common/utils';
+import { getLangType, getToken } from '@/common/utils';
 const { Option } = Select;
 
 
@@ -111,12 +111,13 @@ function MyEditor(props: any) {
                     title: values.title,
                     picture: values.upload?.[0]?.response?.data || data.upload[0].url,
                     content: html,
-                    id
+                    id,
+                    langType: getLangType()
                 }
                 if (type === 'news') {
                     param = {
                         ...param,
-                        type: values.type
+                        type: values.type,
                     }
                 }
                 let api = '';

@@ -3,8 +3,21 @@ import { Button, Pagination } from 'antd';
 import { CardList } from '@/components/index'
 import { $http, API } from '@/common/http';
 import router from 'umi/router';
+import { getLangType } from '@/common/utils';
+import { connect } from 'dva';
 
-const SimManage = (props: any) => {
+const mapStateToProps = (state: any) => {
+  return {
+    state
+  }
+}
+const mapDispatchToProps = (dispatch: any) => {
+  return {
+    dispatch
+  }
+}
+const ApplicationCases = connect(mapStateToProps, mapDispatchToProps)((props: any) => {
+  const { state: { global: { langType } } } = props;
 
   const [data, SetData] = useState<any[]>([]);
   const [total, SetTotal] = useState(0);
@@ -14,10 +27,11 @@ const SimManage = (props: any) => {
     pageSize: 10
   });
 
+
   // 案例列表
   const queryList = useCallback(() => {
     SetTableLoading(true);
-    $http.get(API.caseList + `?pageNum=${Param.pageNum}&pageSize=${Param.pageSize}`).then((res: any) => {
+    $http.get(API.caseList + `?pageNum=${Param.pageNum}&pageSize=${Param.pageSize}&langType=${getLangType()}`).then((res: any) => {
       console.log('res::', res)
       if (res.code === 200) {
         SetTotal(res.total);
@@ -35,7 +49,7 @@ const SimManage = (props: any) => {
 
   useEffect(() => {
     queryList();
-  }, [Param, queryList]);
+  }, [Param, langType, queryList]);
 
 
   const onShowSizeChange = (current: number, pageSize: number) => {
@@ -78,6 +92,6 @@ const SimManage = (props: any) => {
       </div>
     </div >
   );
-}
+})
 
-export default SimManage;
+export default ApplicationCases;

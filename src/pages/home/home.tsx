@@ -10,16 +10,18 @@ import { IconFont } from '@/components';
 import Item from 'antd/lib/list/Item';
 import headerleft_svg from '../../assets/indexlogo1.svg';
 import headerright_svg from '../../assets/header-right.svg';
+import { getLangType } from '@/common/utils';
 const { SubMenu } = Menu;
 
 const Home = (props: any) => {
   const [username, setUsername] = useState('admin');
-  const [selectedKeys, setSelectedKeys] = useState(['simManage']);
+  const [selectedKeys, setSelectedKeys] = useState(['contactUsManage']);
   const [menuNumTip, setMenuNumTip] = useState<{ [key: string]: number }>({
     pendingRenewOrder: 0,
     remitInfoSubmitAudit: 0,
     invoiceApplyAduit: 0
   });
+  const [langTypeShow, setLangTypeShow] = useState(getLangType());
 
   // 菜单选中
   const menuSelect = (item: any) => {
@@ -33,8 +35,19 @@ const Home = (props: any) => {
     // 刷新页面更新菜单选中
     const curRoute = window.location.hash.split('/')[window.location.hash.split('/').length - 1];
     setSelectedKeys([curRoute]);
-
   }, [])
+
+  const setLangType = (type: '0' | '1') => {
+    localStorage.setItem('dapuManageplatformLangType', type);
+    setLangTypeShow(getLangType());
+    props.dispatch({
+      type: 'global/update',
+      payload: {
+        langType: getLangType()
+      }
+    });
+
+  }
 
   const quitAccount = () => {
     router.replace('/login');
@@ -56,6 +69,10 @@ const Home = (props: any) => {
         <div className={styles.pageTop_left}>
           <img src={headerleft_svg} alt="" />
           <div className={styles.logo}></div>
+          <div className={styles.langTypeSwitch}>
+            <div className={`${getLangType() === '1' && styles.active}`} onClick={() => setLangType('1')}>英文版</div>
+            <div className={`${getLangType() === '0' && styles.active}`} onClick={() => setLangType('0')}>中文版</div>
+          </div>
         </div>
         <div className={styles.pageTop_right}>
           <img src={headerright_svg} alt="" />

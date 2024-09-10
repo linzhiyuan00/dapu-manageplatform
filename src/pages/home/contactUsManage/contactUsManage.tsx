@@ -3,6 +3,10 @@ import { Input, Drawer, Select } from 'antd';
 import { ComShowInfo, ShowInfoConfig, ComTable } from '@/components/index'
 import { $http, API } from '@/common/http';
 import moment from 'moment';
+import { getLangType } from '@/common/utils';
+import { connect } from 'dva';
+
+
 
 const _showInfoConfig: ShowInfoConfig[] = [
   {
@@ -45,7 +49,19 @@ const _showInfoConfig: ShowInfoConfig[] = [
 const { Search } = Input;
 const { Option } = Select;
 
-const SimManage = (props: any) => {
+const mapStateToProps = (state: any) => {
+  return {
+    state
+  }
+}
+const mapDispatchToProps = (dispatch: any) => {
+  return {
+    dispatch
+  }
+}
+
+const ContactUsManage = connect(mapStateToProps, mapDispatchToProps)((props: any) => {
+  const { state: { global: { langType } } } = props;
 
   useEffect(() => {
     // console.log('props:', props)
@@ -104,7 +120,7 @@ const SimManage = (props: any) => {
   // sim列表
   const queryList = useCallback(() => {
     SetTableLoading(true);
-    $http.get(API.contactList + `?pageNum=${Param.pageNum}&pageSize=${Param.pageSize}` + (searchKey ? `&searchKey=${searchKey}` : '')).then((res: any) => {
+    $http.get(API.contactList + `?pageNum=${Param.pageNum}&pageSize=${Param.pageSize}&langType=${getLangType()}` + (searchKey ? `&searchKey=${searchKey}` : '')).then((res: any) => {
       console.log('res::', res)
       if (res.code === 200) {
         SetTotal(res.total);
@@ -118,7 +134,7 @@ const SimManage = (props: any) => {
 
   useEffect(() => {
     queryList();
-  }, [Param, queryList]);
+  }, [Param, langType, queryList]);
 
 
   const onSearch = (e: any) => {
@@ -169,6 +185,6 @@ const SimManage = (props: any) => {
       </Drawer>
     </div >
   );
-}
+})
 
-export default SimManage;
+export default ContactUsManage;
